@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+	var canvas=document.getElementById("canvas");
+	var i=0;
+		canvas.height="1000";
+		canvas.width="1000";
+		var context=canvas.getContext('2d');
+//		context.fillStyle="black";
+//		context.beginPath();
+//		context.arc(400,400,300,.5*Math.PI,1.5*Math.PI,true);
+//		context.moveTo(400,100);
+//		context.arcTo(1200,400,400,700,(400-100)*Math.sqrt((400-1200)*(400-1200)+(100-400)*(100-400))/800);
+//		context.stroke();
+////		context.scale(300,300);
+//		context.closePath();
+//		context.beginPath();
+//		context.moveTo(200,100);
+//		context.quadraticCurveTo(400,400,200,700);
+//		setInterval(function(){
+//			set(context);
+//		},50);
+//		context.stroke();
+//		context.closePath();
+//		function set(cxt){
+////			cxt.save();
+//			cxt.clearRect(0,0,1000,1000);
+//			cxt.beginPath();
+//			cxt.moveTo(200,100);
+////			context.quadraticCurveTo(800+i,400,200,700);
+//			i++;
+//			cxt.stroke();
+//			cxt.closePath();
+////			cxt.restore();
+//		}
+		var x=0,y=0;
+		canvas.onmousedown=function(){
+			
+			canvas.onmousemove=function(e){
+				context.clearRect(0,0,1000,1000);
+			context.beginPath();
+			context.moveTo(200,100);
+				
+				console.log(x,y);
+			context.quadraticCurveTo(e.pageX,e.pageY,200,700);
+				context.stroke();
+			context.closePath();
+				}
+			
+			canvas.onmouseup=function(e){
+				x=e.pageX;
+				y=e.pageY;
+				canvas.onmousemove=null;
+			}
+		}
+	</script>
+</body>
+</html>
