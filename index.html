@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="drawing" height='1024' width='768' style="border:1px solid;display:block;margin:0 auto;"></canvas>
+<!--	<img draggable="true" src="../img/huojian_03.png" alt="">-->
+	<script>
+		var drawing=document.getElementById("drawing");
+		if(drawing.getContext)
+//				解决这些问题非常简单，就是不要使用css来指定canvas元素大小，保持canvas元素尺寸与绘图表面尺寸的一致性
+//				在使用canvas之前要先检测getContext()是否存在，有些浏览器会为html规范之外的元素创建默认的html对象。
+//				在这种情况下，即使drawing变量中保留一个有效的元素引用，也检测不到getContext()方法；
+		{
+			var context=drawing.getContext("2d");
+//			fill 填充样式
+			context.fillStyle="rgba(0,0,255,.5)";
+			context.fillRect( 30, 30, 50, 50);
+			context.fillRect(55,55,50,50);
+//			清楚一个矩形
+			context.clearRect(62.5,62.5,10,10);
+//			stroke 描边
+			context.strokeStyle="greenyellow";
+			context.strokeRect(30,110,50,50);
+			context.strokeRect(55,135,50,50);
+//			在绘制圆形的过程中，描线从第一象限x轴正方向处开始
+//			false逆时针，true顺时针
+			context.beginPath();
+			context.strokeStyle="pink";
+			context.arc(100,100,99,1/2*Math.PI,2*Math.PI,false);//以(x,y)为圆心画圆
+			context.arcTo(50,50,30,30,5);//从上一点开始绘制一条弧线，到(x2,y2)为止，并且以给定的半径radius穿过(x1,y1)
+			context.stroke();
+		}
+	</script>
+</body>
+</html>

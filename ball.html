@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="drawing" style="border:1px solid;display:block;margin:0 auto;"></canvas>
+	<script>
+	window.onload=function(){
+		var canvas=document.getElementById("drawing");
+			canvas.width=800;
+			canvas.height=800;
+			var context=canvas.getContext('2d');
+		context.strokeStyle="red";
+		for(var i=0;i<10;i++){
+			context.beginPath()
+			context.arc( 50+i*100,540,40,i,2*Math.PI*(i+1)/10)
+//			context.closePath()
+			context.stroke()
+		}
+	}
+	</script>
+</body>
+</html>
